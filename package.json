@@ -1,0 +1,11 @@
+{
+    "name": "bs5-oco",
+    "version": "0.1.0",
+    "dependencies": {
+        "grunt": "^1.5.3",
+        "grunt-contrib-cssmin": "^4.0.0",
+        "grunt-contrib-watch": "latest",
+        "grunt-sass": "^3.1.0",
+        "node-sass": "^7.0.1"
+    }
+}
