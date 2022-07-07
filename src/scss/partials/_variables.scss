@@ -1,1 +1,5 @@
-$fresh_green: green;  
+$header_font: 'Merriweather', serif;
+$body_font: 'Work Sans', sans-serif;
+
+.header-font { font-family: $header_font; }
+.body-font { font-family: $body_font; } 

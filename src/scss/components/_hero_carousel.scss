@@ -1,0 +1,12 @@
+.hero_carousel {
+    .carousel-inner {
+        .carousel-item {
+            height: 700px;
+            .item {
+                background-repeat: no-repeat;
+                background-size: cover; 
+                background-position: center;  
+            }
+        } 
+    } 
+}

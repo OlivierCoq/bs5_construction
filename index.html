@@ -6,13 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap 5 Landing Page</title>
     <link rel="stylesheet" href="dist/css/style.min.css">
-    
+        <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="clp_home" class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <h1>{{ hero.title }}</h1>
+        <div class="hero">
+            <div id="hero_carousel" class="carousel slide hero_carousel" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item" v-for="(item, a) in hero.carousel" :class="a == 0 ? 'active' : ''">
+                    <!-- <img :src="item.img" class="d-block w-100" :alt="item.header"> -->
+                    <div class="w-100 h-100 item" :style="{ 'background-image': 'url(' + item.img + ')' }">
+
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#hero_carousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#hero_carousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
     </div>
@@ -26,9 +44,29 @@
             el: '#clp_home',
             data: {
                 hero: {
-                    title: `Testing Bootstrap and Vue`
+                    title: `Testing Bootstrap and Vue`,
+                    carousel: [
+                        {
+                            img: `dist/img/jeriden-villegas-hero_2.jpeg`,
+                            header: `Exterior Renovations`,
+                            copy: ``
+                        },
+                        {
+                            img: `dist/img/nathan-waters-hero_1.jpeg`,
+                            header: `Construction Management`,
+                            copy: ``
+                        }
+                    ]
                 },
                 header_slide_data: {}
+            },
+            created() {
+                this.setupCarousel()
+            },
+            methods: {
+                setupCarousel() {
+                    this.$nextTick(() => {})
+                }
             }
         })
     </script>
