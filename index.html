@@ -12,14 +12,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="clp_home" class="container-fluid">
+    <div id="clp_home" class="container-fluid px-0">
         <div class="hero">
             <div id="hero_carousel" class="carousel slide hero_carousel" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item" v-for="(item, a) in hero.carousel" :class="a == 0 ? 'active' : ''">
                     <!-- <img :src="item.img" class="d-block w-100" :alt="item.header"> -->
-                    <div class="w-100 h-100 item" :style="{ 'background-image': 'url(' + item.img + ')' }">
-
+                    <div class="w-100 h-100 item d-flex flex-column justify-content-center align-items-center" :style="{ 'background-image': 'url(' + item.img + ')' }">
+                        <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-black-opaque-1">
+                            <div class="w-100 w-md-50 w-lg-50 p-5 p-md-0 ctr-copy">
+                                <h2 class="header-font text-light text-uppercase fs-1 text-shadow-1">{{ item.header }}</h2>
+                                <p v-html="item.copy" class="text-shadow-1 text-light body-font w-100 w-md-75"></p>
+                                <div class="ctr-btns">
+                                    <a href="#" class="btn btn-md btn-outline-light text-uppercase my-3  px-5">Get Started Today</a>
+                                    <a href="#" class="btn btn-md btn-outline-light text-uppercase my-3  px-5 ms-md-3">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -33,6 +42,7 @@
                 </button>
             </div>
         </div>
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
@@ -49,24 +59,26 @@
                         {
                             img: `dist/img/jeriden-villegas-hero_2.jpeg`,
                             header: `Exterior Renovations`,
-                            copy: ``
+                            copy: `Leverage dependable frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative structures to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.`
                         },
                         {
                             img: `dist/img/nathan-waters-hero_1.jpeg`,
                             header: `Construction Management`,
-                            copy: ``
+                            copy: `Bring to the table win-win development strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.`
+                        },
+                        {
+                            img: `dist/img/christopher-burns-construction.jpeg`,
+                            header: `Safety Training`,
+                            copy: `Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.`
                         }
                     ]
                 },
                 header_slide_data: {}
             },
             created() {
-                this.setupCarousel()
             },
             methods: {
-                setupCarousel() {
-                    this.$nextTick(() => {})
-                }
+
             }
         })
     </script>

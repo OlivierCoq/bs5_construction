@@ -3,3 +3,9 @@ $body_font: 'Work Sans', sans-serif;
 
 .header-font { font-family: $header_font; }
 .body-font { font-family: $body_font; } 
+
+
+$text-shadow-1: 3px 2px 6px #000000e0;
+.text-shadow-1 { text-shadow: $text-shadow-1; } 
+
+.bg-black-opaque-1 { background-color: rgba(0, 0, 0, 0.511); }

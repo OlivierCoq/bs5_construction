@@ -6,6 +6,12 @@
                 background-repeat: no-repeat;
                 background-size: cover; 
                 background-position: center;  
+
+                .ctr-copy {
+                    @include media-breakpoint-up(md) { width: 50% !important; }
+                    p { @include media-breakpoint-up(md) { width: 75% !important; } }
+                    .btn { @include media-breakpoint-down(sm) { width: 100% !important; }  }
+                }
             }
         } 
     } 
