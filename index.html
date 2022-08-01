@@ -10,43 +10,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/a19912c32b.js"></script>
 </head>
 <body>
     <div id="clp_home" class="container-fluid px-0">
         <div class="hero">
-            <div id="hero_carousel" class="carousel slide hero_carousel" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item" v-for="(item, a) in hero.carousel" :class="a == 0 ? 'active' : ''">
-                    <!-- <img :src="item.img" class="d-block w-100" :alt="item.header"> -->
-                    <div class="w-100 h-100 item d-flex flex-column justify-content-center align-items-center" :style="{ 'background-image': 'url(' + item.img + ')' }">
-                        <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-black-opaque-1">
-                            <div class="w-100 w-md-50 w-lg-50 p-5 p-md-0 ctr-copy">
-                                <h2 class="header-font text-light text-uppercase fs-1 text-shadow-1">{{ item.header }}</h2>
-                                <p v-html="item.copy" class="text-shadow-1 text-light body-font w-100 w-md-75"></p>
-                                <div class="ctr-btns">
-                                    <a href="#" class="btn btn-md btn-outline-light text-uppercase my-3  px-5">Get Started Today</a>
-                                    <a href="#" class="btn btn-md btn-outline-light text-uppercase my-3  px-5 ms-md-3">Learn More</a>
-                                </div>
-                            </div>
+            <hero-carousel :items="hero.carousel"></hero-carousel>
+        </div>
+        <div class="container">
+            <projects-grid :projects="projects"></projects-grid>
+        </div>
+        <div class="container-fluid px-0 mt-5 bg-danger">
+            <div class="container my-4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="p-5 py-5 my-5">
+                            <h2 class="text-light header-font text-uppercase fw-light">
+                                <span class="text-uppercase fw-bold">About</span><br/> this company
+                            </h2>
                         </div>
                     </div>
-                  </div>
+                    <div class="col-sm-12 col-md-8">
+                        <div class="p-5 my-5">
+
+                            <div class="accordion accordion-flush" id="featureAccordion">
+                                <div v-for="feature, i in about.features" class="accordion-item">
+                                  <h2 class="accordion-header" :id="'feature' + i">
+                                    <button class="accordion-button bg-danger text-light text-uppercase" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse'+ i" :aria-expanded="i == 0" aria-controls="collapseOne">
+                                      {{feature.title}}
+                                    </button>
+                                  </h2>
+                                  <div :id="'collapse'+ i" class="accordion-collapse collapse " :class="i == 0 ? 'show' : ''" aria-labelledby="headingOne" data-bs-parent="#featureAccordion">
+                                    <div class="accordion-body">
+                                      {{feature.copy}}
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#hero_carousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#hero_carousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
-
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="dist/js/components.js"></script>
     <script>
             // Construction Landing Page
         const clp_home = new Vue({
@@ -73,13 +85,70 @@
                         }
                     ]
                 },
-                header_slide_data: {}
+                projects: [
+                    {
+                        img: `dist/img/projects/rui-alves-sm.jpeg`,
+                        title: `Alves`,
+                        copy: `Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.`,
+                        link: `/projects/alves`,
+                        active: false
+                    },
+                    {
+                        img: `dist/img/projects/zongnan-bao-sm.jpeg`,
+                        title: `Bao`,
+                        copy: `Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.`,
+                        link: `/projects/bao`,
+                        active: false
+                    },
+                    {
+                        img: `dist/img/projects/esteban-chinchilla-small.jpeg`,
+                        title: `Chinchilla`,
+                        copy: `Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.`,
+                        link: `/projects/chinchilila`,
+                        active: false
+                    },
+                    {
+                        img: `dist/img/projects/ryan-klaus-sm.jpeg`,
+                        title: `Klaus`,
+                        copy: `Baseball ipsum dolor sit amet passed ball outs, sweep stretch bleeder triple play. Left fielder count fair swing cork balk ball. Full count southpaw reliever lineup crooked number fastball second base. Perfect game outfielder rally force dodgers right fielder dead ball era right field. Pickoff world series peanuts batting average cup of coffee foul inside robbed. Bleeder club appeal first base sidearm mustard steal line drive inning.`,
+                        link: `/projects/klaus`,
+                        active: false
+                    },
+                    {
+                        img: `dist/img/projects/paul-steiner-sm.jpeg`,
+                        title: `Steiner`,
+                        copy: `Strikeout strikeout rubber game pickoff foul line, cellar baltimore chop starting pitcher grand slam. Series baseline grass knuckle loss off-speed rip baseline. Moneyball rubber breaking ball tapper pinch hitter cheese flyout. Game foul pole butcher boy scorecard check swing right field plate. Mustard swing fielder’s choice bullpen rope strike zone diamond loogy disabled list. Curve bunt first baseman runs cycle loogy pennant perfect game.`,
+                        link: `/projects/steiner`,
+                        active: false
+                    },
+                    {
+                        img: `dist/img/projects/dave-yap-sm.jpeg`,
+                        title: `Yap`,
+                        copy: `Mean while, in a waka, Rangi and James and the Giant Peach were up to no good with a bunch of bloody jelly tip icecreams. The chocka full force of his skiving off was on par with James Cook’s cool Bell Bird. Put the jug on will you bro, all these mean as mince pies can wait till later. But, you’re not in Guatemala now, don’t be a egg. The first prize for munting goes to… some uni student and his nuclear-free ute, what a dole bludger. Those bloody Jaffa’s, no wucken forries. Cook your own eggs Jake, oh stink buzz, good on ya, mate. Bro, girl guide biscuits are really rip-off good with choice fellas, aye.`,
+                        link: `/projects/yap`,
+                        active: false
+                    }   
+                ],
+                about: {
+                    features: [
+                        {
+                            title: `Thing 1`,
+                            copy: `Hunting bonjour andouille bourre sac a lait lagniappe. Tasso coffee bonjour King Cake barbed wire boucherie zydeco boucherie andouille hunting. Mirliton gumbo smoked sausage levee hot sauce. Viens ci andouille beer Boudreaux okra gumbo po-boy tasso bourre gulf shrimp. Boiled crawfish Mardi Gras couillon fried chicken jambalaya lagniappe fried chicken mirliton boiled crawfish. Sa fait chaud remoulade bread pudding iced tea levee trail ride sac a lait hunting Lafayette. Macque choux football fried catfish hunting yams coffee bread pudding sauce piquante King Cake po-boy. Levee sauce piquante remoulade pecan pie hot sauce.`
+                        },
+                        {
+                            title: `Thing 2`,
+                            copy: `Jambalaya bourre ca c’est bon pecan pie boudin tasso cajun boiled crawfish cajun fried chicken. Hunting catahoula beer etoufee bonjour pirogue jambalaya. Fried chicken bread pudding sugar cane bread pudding canaille viens ci.`
+                        },
+                        {
+                            title: `Thing 3`,
+                            copy: `Lagniappe crawfish bourre bisque turducken bayou cher interstate coffee Boudreaux. Macque choux lagniappe crawfish food Mardi Gras catahoula bonjour. Hot sauce fried catfish envie sauce piquante lagniappe. Etoufee boucherie bbq barbed wire file remoulade. Boiled crawfish smoked sausage etoufee lagniappe bonjour.`
+                        }
+                    ]
+                }
             },
             created() {
             },
-            methods: {
-
-            }
+            methods: {}
         })
     </script>
 </body>
