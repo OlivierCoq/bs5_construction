@@ -19,16 +19,19 @@
             <hero-carousel :items="hero.carousel"></hero-carousel>
         </div>
         <div class="container">
-            <projects-grid :projects="projects"></projects-grid>
+            <div class="pb-3">
+                <projects-grid :projects="projects"></projects-grid>
+            </div>
         </div>
-        <div class="container-fluid px-0 mt-5 bg-orange-1">
-            <div class="container my-4">
+        <div class="container-fluid px-0 mt-5 bg-orange-2">
+            <div class="container mt-4">
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
-                        <div class="p-5 py-5 my-5">
+                        <div class="p-5 py-4 my-4 py-md-5 my-md-5">
                             <h2 class="text-light header-font text-uppercase fw-light">
                                 <span class="text-uppercase fw-bold">About</span><br/> this company
                             </h2>
+                            <p class="text-light my-2" v-html="about.intro"></p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-8">
@@ -37,15 +40,15 @@
                             <div class="accordion accordion-flush" id="featureAccordion">
                                 <div v-for="feature, i in about.features" class="accordion-item">
                                   <h2 class="accordion-header" :id="'feature' + i">
-                                    <button class="accordion-button bg-orange-1 text-light text-uppercase" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse'+ i" :aria-expanded="i == 0" aria-controls="collapseOne">
+                                    <button class="accordion-button bg-orange-1 text-light text-uppercase focus-red" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse'+ i" :aria-expanded="i == 0" aria-controls="collapseOne">
                                       {{feature.title}}
                                     </button>
                                   </h2>
-                                  <div :id="'collapse'+ i" class="accordion-collapse collapse " :class="i == 0 ? 'show' : ''" aria-labelledby="headingOne" data-bs-parent="#featureAccordion">
-                                    <div class="accordion-body">
-                                      {{feature.copy}}
+                                    <div :id="'collapse'+ i" class="accordion-collapse collapse " :class="i == 0 ? 'show' : ''" aria-labelledby="headingOne" data-bs-parent="#featureAccordion">
+                                        <div class="accordion-body">
+                                            {{feature.copy}}
+                                        </div>
                                     </div>
-                                  </div>
                                 </div>
                             </div>
 
@@ -54,6 +57,50 @@
                 </div>
             </div>
         </div>
+
+        <div class="container-fluid px-0 bg_img_band">
+            <div class="w-100 h-100 bg-black-opaque-1 py-5 ctr-inner"></div>
+        </div>
+        <div class="container-fluid">
+           <div class="p-4">
+                <div class="container">
+                    <div class="ctr-testimonials box-shadow-2 bg-light p-3 p-md-5">
+
+                        <div id="testimonials_carousel" class="carousel slide testimonials_carousel carousel-dark" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item" v-for="(item, a) in testimonials" :class="a == 0 ? 'active' : ''">
+                                    <div class="w-100 h-100 item d-flex flex-column justify-content-center align-items-center">
+                                        <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                            <img :src="item.img" :alt="item.author" class="rounded-circle">
+                                            <figure class="my-4 w-75">
+                                                <blockquote class="blockquote">
+                                                <p v-html="item.copy"></p>
+                                                </blockquote>
+                                                <figcaption class="blockquote-footer">
+                                                    {{item.author}}, <cite title="Position">{{item.position}}</cite>
+                                                </figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#testimonials_carousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#testimonials_carousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div> 
+
+
+
+                    </div>
+                </div>
+           </div>
+        </div>
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
@@ -130,6 +177,7 @@
                     }   
                 ],
                 about: {
+                    intro: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet volutpat consequat mauris nunc congue nisi vitae. Mus mauris vitae ultricies leo integer malesuada. Eget egestas purus viverra accumsan in. `,
                     features: [
                         {
                             title: `Thing 1`,
@@ -144,7 +192,27 @@
                             copy: `Lagniappe crawfish bourre bisque turducken bayou cher interstate coffee Boudreaux. Macque choux lagniappe crawfish food Mardi Gras catahoula bonjour. Hot sauce fried catfish envie sauce piquante lagniappe. Etoufee boucherie bbq barbed wire file remoulade. Boiled crawfish smoked sausage etoufee lagniappe bonjour.`
                         }
                     ]
-                }
+                },
+                testimonials: [
+                    {
+                        img: `dist/img/testimonials/man-1.jpg`,
+                        author: `Jerry Wright`,
+                        position: `Project Manager`,
+                        copy: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin. Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed. Varius morbi enim nunc faucibus a pellentesque sit amet. Eu volutpat odio facilisis mauris sit. Gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim. Elit at imperdiet dui accumsan sit amet nulla facilisi morbi. Penatibus et magnis dis parturient montes nascetur.`
+                    },
+                    {
+                        img: `dist/img/testimonials/woman-1.jpg`,
+                        author: `Sarah Thompson`,
+                        position: `Investor`,
+                        copy: `Penatibus et magnis dis parturient montes nascetur. `
+                    },
+                    {
+                        img: `dist/img/testimonials/man-2.jpg`,
+                        author: `Sarah Thompson`,
+                        position: `Architect`,
+                        copy: `Justo donec enim diam vulputate. Vitae auctor eu augue ut lectus. Aliquet risus feugiat in ante metus dictum at tempor commodo. Purus viverra accumsan in nisl nisi scelerisque eu. Ut ornare lectus sit amet est placerat in. Elementum nisi quis eleifend quam adipiscing vitae proin. Volutpat lacus laoreet non curabitur gravida arcu ac. Ullamcorper malesuada proin libero nunc consequat interdum varius sit. Amet tellus cras adipiscing enim eu turpis egestas. Mi eget mauris pharetra et ultrices neque.`
+                    },
+                ]
             },
             created() {
             },

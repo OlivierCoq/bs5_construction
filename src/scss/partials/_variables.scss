@@ -8,7 +8,18 @@ $body_font: 'Work Sans', sans-serif;
 $text-shadow-1: 3px 2px 6px #000000e0;
 .text-shadow-1 { text-shadow: $text-shadow-1; } 
 .box-shadow-1 { box-shadow: 10px 13px 20px #0000005c; }
+.box-shadow-2 { box-shadow: 3px 6px 36px #00000038; }
 
 .bg-black-opaque-1 { background-color: rgba(0, 0, 0, 0.511); }
 
-.bg-orange-1 { background-color: #DC3545 !important; } 
+.bg-orange-1 { background-color: #d50014 !important; }  
+.bg-orange-2 { background-color: #77000b !important; }
+
+.focus-red { 
+    &:focus {
+        border: none !important;
+        outline: none !important;
+        border-color: transparent !important;
+        box-shadow: 0px 2px 10px #810000db !important;
+    }
+ }

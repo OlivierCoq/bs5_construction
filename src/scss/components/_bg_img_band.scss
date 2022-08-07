@@ -1,0 +1,9 @@
+.bg_img_band {
+    background-image: url('../../dist/img/construction-site.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 300px;
+
+    .ctr-inner { min-height: inherit !important; }
+}
