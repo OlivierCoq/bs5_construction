@@ -27,7 +27,7 @@
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
-                        <div class="p-5 py-4 my-4 py-md-5 my-md-5">
+                        <div class="p-3 py-4 mt-4 mb-3 py-md-5 my-md-5">
                             <h2 class="text-light header-font text-uppercase fw-light">
                                 <span class="text-uppercase fw-bold">About</span><br/> this company
                             </h2>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-8">
-                        <div class="p-5 my-5">
+                        <div class="p-md-5 px-3 mb-5 my-md-5">
 
                             <div class="accordion accordion-flush" id="featureAccordion">
                                 <div v-for="feature, i in about.features" class="accordion-item">
@@ -62,7 +62,7 @@
             <div class="w-100 h-100 bg-black-opaque-1 py-5 ctr-inner"></div>
         </div>
         <div class="container-fluid">
-           <div class="p-4">
+           <div class="p-5">
                 <div class="container">
                     <div class="ctr-testimonials box-shadow-2 bg-light p-3 p-md-5">
 
@@ -71,7 +71,7 @@
                                 <div class="carousel-item" v-for="(item, a) in testimonials" :class="a == 0 ? 'active' : ''">
                                     <div class="w-100 h-100 item d-flex flex-column justify-content-center align-items-center">
                                         <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                                            <img :src="item.img" :alt="item.author" class="rounded-circle">
+                                            <img :src="item.img" :alt="item.author" class="rounded-circle mt-4 mt-md-0">
                                             <figure class="my-4 w-75">
                                                 <blockquote class="blockquote">
                                                 <p v-html="item.copy"></p>
@@ -100,7 +100,14 @@
                 </div>
            </div>
         </div>
-
+        <div class="container-fluid bg-light-gray px-0 btm-cta">
+            <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6">
+                    <img src="dist/img/btm_cta_img.png" alt="Reach out now." class="main-graphic"> 
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
